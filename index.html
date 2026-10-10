@@ -1,240 +1,218 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wikimedium — Наглядный пример веб-вёрстки</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-color: #222;
-line-height: 1.5;
-background: #fff;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #1d1d1f;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-.container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 0 20px;
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 12px 22px;
+      background: rgba(251, 251, 253, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 12px;
+      font-weight: 400;
+      color: #1d1d1f;
+    }
 
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 20px 0;
-border-bottom: 1px solid #eee;
-}
+    .nav-logo {
+      font-size: 17px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
 
-.logo {
-font-weight: 700;
-font-size: 18px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
+    .nav-item {
+      display: flex;
+      align-items: center;
+      cursor: default;
+    }
 
-.logo span {
-color: #00a884;
-}
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
 
-.nav-link {
-color: #222;
-text-decoration: none;
-font-size: 15px;
-}
+    .nav-icon {
+      width: 15px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.hero {
-display: flex;
-gap: 40px;
-padding: 60px 0 40px;
-align-items: center;
-}
+    .nav-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: #1d1d1f;
+    }
 
-.hero-text {
-flex: 1;
-}
+    .content {
+      display: flex;
+      justify-content: center;
+      background: #f5f5f7;
+      flex: 1;
+      padding: 48px 22px 80px;
+    }
 
-.hero-text h1 {
-font-size: 32px;
-font-weight: 700;
-line-height: 1.25;
-margin-bottom: 20px;
-}
+    .columns {
+      display: flex;
+      gap: 80px;
+      max-width: 980px;
+      width: 100%;
+    }
 
-.hero-text p {
-font-size: 16px;
-color: #444;
-max-width: 420px;
-}
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 180px;
+    }
 
-.devices {
-flex: 1.2;
-display: flex;
-justify-content: center;
-}
+    .column-label {
+      font-size: 12px;
+      color: #6e6e73;
+      font-weight: 400;
+    }
 
-.devices img {
-max-width: 100%;
-height: auto;
-display: block;
-}
+    .column-title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1d1d1f;
+      padding-bottom: 6px;
+    }
 
-.section {
-padding: 50px 0;
-}
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.section h2 {
-font-size: 24px;
-font-weight: 700;
-margin-bottom: 16px;
-}
+    .link {
+      font-size: 14px;
+      color: #06c;
+      font-weight: 400;
+      cursor: default;
+    }
 
-.section p {
-font-size: 16px;
-color: #444;
-max-width: 520px;
-}
+    .link:hover {
+      text-decoration: underline;
+    }
 
-.two-col {
-display: flex;
-gap: 40px;
-align-items: center;
-}
+    @media (max-width: 800px) {
+      .nav {
+        gap: 16px;
+        font-size: 11px;
+        padding: 10px 16px;
+        overflow-x: auto;
+      }
 
-.two-col > div {
-flex: 1;
-}
+      .content {
+        padding: 32px 16px 60px;
+      }
 
-.two-col img {
-max-width: 100%;
-height: auto;
-display: block;
-}
+      .columns {
+        flex-direction: column;
+        gap: 40px;
+      }
 
-.bottom {
-text-align: center;
-padding: 60px 0 80px;
-border-top: 1px solid #eee;
-}
-
-.bottom h2 {
-font-size: 24px;
-font-weight: 700;
-margin-bottom: 16px;
-}
-
-.bottom p {
-font-size: 16px;
-color: #444;
-max-width: 560px;
-margin: 0 auto 30px;
-}
-
-.buttons {
-display: flex;
-justify-content: center;
-gap: 16px;
-flex-wrap: wrap;
-}
-
-.btn {
-display: inline-block;
-padding: 12px 24px;
-border-radius: 8px;
-font-size: 15px;
-text-decoration: none;
-border: 1px solid #222;
-color: #222;
-background: #fff;
-transition: 0.2s;
-}
-
-.btn:hover {
-background: #f5f5f5;
-}
-
-.btn.primary {
-background: #222;
-color: #fff;
-}
-
-.btn.primary:hover {
-background: #000;
-}
-
-@media (max-width: 800px) {
-.hero {
-flex-direction: column;
-}
-
-.two-col {
-flex-direction: column;
-}
-
-.hero-text h1 {
-font-size: 26px;
-}
-}
-</style>
+      .column-title {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<header>
-<div class="logo">
-<span>◈◈</span> Wikimedium
-</div>
-<a href="#" class="nav-link">О проекте</a>
-</header>
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor">
+        <path d="M13.2 10.5c0-1.9 1.5-2.9 1.6-3-0.9-1.3-2.2-1.5-2.7-1.5-1.1-0.1-2.2 0.7-2.8 0.7s-1.5-0.7-2.5-0.6c-1.3 0-2.4 0.7-3.1 1.9-1.3 2.3-0.3 5.7 0.9 7.5 0.6 0.9 1.3 1.9 2.3 1.9 0.9 0 1.3-0.6 2.4-0.6s1.4 0.6 2.4 0.6c1 0 1.6-0.9 2.2-1.8 0.7-1 1-2 1-2.1-0.1 0-1.9-0.7-1.9-2.9zm-1.8-5.3c0.5-0.6 0.9-1.5 0.8-2.4-0.8 0-1.7 0.5-2.3 1.2-0.5 0.6-1 1.5-0.8 2.3 0.9 0.1 1.8-0.4 2.3-1.1z"/>
+      </svg>
+    </div>
+    <div class="nav-item">Store</div>
+    <div class="nav-item">Mac</div>
+    <div class="nav-item">iPad</div>
+    <div class="nav-item">TV & Home</div>
+    <div class="nav-item">Entertainment</div>
+    <div class="nav-item">Accessories</div>
+    <div class="nav-item">Support</div>
+    <div class="nav-icons">
+      <div class="nav-icon">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="6.5" cy="6.5" r="5"/>
+          <path d="M11 11l3.5 3.5"/>
+        </svg>
+      </div>
+      <div class="nav-icon">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M4 5.5h8l-.7 7.2a1 1 0 01-1 .8H5.7a1 1 0 01-1-.8L4 5.5z"/>
+          <path d="M6 5.5V4a2 2 0 014 0v1.5"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
 
-<section class="hero">
-<div class="hero-text">
-<h1>Наглядный пример, чтобы учиться веб-вёрстке</h1>
-<p>Разработан для изучения основ веб-вёрстки, языка гипертекстовой разметки HTML и каскадных таблиц стилей CSS</p>
-</div>
-<div class="devices">
-<img src="about1.png" alt="Дом Наркомфина на телефоне и ноутбуке">
-</div>
-</section>
+  <div class="content">
+    <div class="columns">
+      <div class="column">
+        <div class="column-label">Shop</div>
+        <div class="column-title">Shop the Latest</div>
+        <div class="link-list">
+          <div class="link">Mac</div>
+          <div class="link">iPad</div>
+          <div class="link">iPhone</div>
+          <div class="link">Apple Watch</div>
+          <div class="link">Apple Vision Pro</div>
+          <div class="link">AirPods</div>
+          <div class="link">Accessories</div>
+        </div>
+      </div>
 
-<section class="section">
-<div class="two-col">
-<div>
-<img src="about2.png" alt="Дом Наркомфина на планшетах">
-</div>
-<div>
-<h2>С нуля до первого сайта под компьютеры, смартфоны и планшеты</h2>
-<p>Чтобы начать изучать веб-вёрстку на этом проекте, не требуется каких-то специальных знаний, кроме базового умения пользоваться компьютером</p>
-</div>
-</div>
-</section>
+      <div class="column">
+        <div class="column-label">Quick Links</div>
+        <div class="link-list" style="padding-top: 8px;">
+          <div class="link">Find a Store</div>
+          <div class="link">Order Status</div>
+          <div class="link">Apple Upgrade</div>
+          <div class="link">Apple Trade In</div>
+          <div class="link">Financing</div>
+          <div class="link">Personal Setup</div>
+          <div class="link">College Student Offer</div>
+        </div>
+      </div>
 
-<section class="section">
-<div class="two-col">
-<div>
-<h2>Реальный проект, реальный рабочий процесс</h2>
-<p>Обучение приближено к работе в реальной жизни, работа разбита на этапы от типографики, создания меню и использования эффектов, до адаптации под мобильные устройства и использования JavaScript скриптов</p>
-</div>
-<div>
-<img src="about3.png" alt="Дом Наркомфина — полный макет">
-</div>
-</div>
-</section>
-
-<section class="bottom">
-<h2>Возможность самостоятельного и курируемого обучения</h2>
-<p>Вы можете обучаться самостоятельно по исходному коду проекта, выложенному на GitHub, или записаться на курс «Основы веб-вёрстки» в Школе Дизайна НИУ</p>
-<div class="buttons">
-<a href="#" class="btn">Исходный код на GitHub</a>
-<a href="#" class="btn primary">Курс в Школе Дизайна</a>
-</div>
-</section>
-</div>
+      <div class="column">
+        <div class="column-label">Shop Special Stores</div>
+        <div class="link-list" style="padding-top: 8px;">
+          <div class="link">Certified Refurbished</div>
+          <div class="link">Education</div>
+          <div class="link">Business</div>
+          <div class="link">Veterans and Military</div>
+          <div class="link">Government</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
